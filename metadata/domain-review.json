@@ -1,0 +1,73 @@
+{
+  "repo": "watch-plat-image-pipe",
+  "language": "Java",
+  "category": "Platform engineering",
+  "goal": "Package a Java local lab for image analysis with capacity fixtures, allocation and spill reports, and documented operating limits.",
+  "review_model": {
+    "terms": [
+      "rollout width",
+      "quota pressure",
+      "route drift",
+      "secret scope"
+    ],
+    "lanes": [
+      "ship",
+      "watch",
+      "hold"
+    ],
+    "score": "signal * 2 + slack + confidence - drag * 3",
+    "purpose": "surface the domain-specific cases that need the most careful review"
+  },
+  "cases": [
+    {
+      "name": "baseline",
+      "focus": "rollout width",
+      "signal": 49,
+      "slack": 23,
+      "drag": 28,
+      "confidence": 56,
+      "score": 93,
+      "lane": "hold"
+    },
+    {
+      "name": "stress",
+      "focus": "quota pressure",
+      "signal": 64,
+      "slack": 50,
+      "drag": 31,
+      "confidence": 47,
+      "score": 132,
+      "lane": "watch"
+    },
+    {
+      "name": "edge",
+      "focus": "route drift",
+      "signal": 84,
+      "slack": 24,
+      "drag": 21,
+      "confidence": 83,
+      "score": 212,
+      "lane": "ship"
+    },
+    {
+      "name": "recovery",
+      "focus": "secret scope",
+      "signal": 53,
+      "slack": 35,
+      "drag": 18,
+      "confidence": 79,
+      "score": 166,
+      "lane": "ship"
+    },
+    {
+      "name": "stale",
+      "focus": "rollout width",
+      "signal": 78,
+      "slack": 51,
+      "drag": 13,
+      "confidence": 66,
+      "score": 234,
+      "lane": "ship"
+    }
+  ]
+}
